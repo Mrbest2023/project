@@ -2,7 +2,6 @@ from scipy import fft, arange
 import numpy as np
 import os
 import time 
-import sleep
 import grovepi
 from grovepi import *
 from grove_rgb_lcd import *
