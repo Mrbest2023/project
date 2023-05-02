@@ -6,9 +6,9 @@ import grovepi
 from grovepi import *
 from grove_rgb_lcd import *
 
+sound_sensor=0
 grovepi.pinMode(sound_sensor, "INPUT")
 
-sound_sensor=0
 led=5
 
 
