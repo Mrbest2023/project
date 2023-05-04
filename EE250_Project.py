@@ -10,12 +10,11 @@ def on_connect(client, userdata, flags, rc):
 
 button = 3
 flag=1
-
+led=5
 sound_sensor=0
 grovepi.pinMode(sound_sensor, "INPUT")
 grovepi.pinMode(button,"INPUT")
 
-led=5
 sensor_value=[]
 
 if __name__ == '__main__': 
