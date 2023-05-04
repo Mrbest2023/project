@@ -2,36 +2,28 @@ from flask import Flask, request, jsonify
 
 from EE250_Project import main 
 from notes import frequency_spectrum, note
+import paho.mqtt.client as mqtt 
+def on_connect(client, userdata, flags, rc):
+    print("Connected to server (i.e., broker) with result code "+str(rc))
+    client.subscribe()
+    
+    client.message_callback_add("btbest/ipinfo", on_message_from_ipinfo)
+    client.message_callback_add("btbest/date", on_message_from_date)
+client.message_callback_add("btbest/time", on_message_from_time)
+def on_message(client, userdata, msg): print("Default callback - topic: " + msg.topic + " msg: " + str(msg.payload, "utf-8"))
 
+def on_message_from_ipinfo(client, userdata, message): print("Custom callback - IP Message: "+message.payload.decode()) def on_message_from_date(client, userdata, message): print("custom callback - Date: "+message.payload.decode()) def on_message_from_time(client, userdata, message): print("custom callback - Time: "+message.payload.decode())
 
+if name == 'main':
 
-app = Flask(__name__)
+client = mqtt.Client()
+client.on_message = on_message
+client.on_connect = on_connect
 
-@app.route('/')
-def index():
-    return jsonify({'message': 'Welcome'})
-@app.route('/main')
-def pro1():
-    data=request.get_json()
-    return jsonify(main(data))
-@app.route('/frequency_spectrum')
-def pro2():
-    data=request.get_json()
-    return jsonify(frequency_spectrum(data))
-@app.route('/note')
-def pro3():
-    data=request.get_json()
-    return jsonify(note(data))
+  
+client.connect(host="68.181.32.115", port=11000, keepalive=60)
+client.loop_forever()
 
-if __name__ == '__main__':
-    app.run("0.0.0.0")
-    while True:
-        try: 
-            sr=32
-            frequency,X=frequency_spectrum(sensor_value, sr)
-            type=note(frequency)
-
-        except:
-
-
-
+    sr=32
+    frequency,X=frequency_spectrum(sensor_value, sr)
+    type=note(frequency)
