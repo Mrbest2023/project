@@ -43,3 +43,5 @@ if __name__ == '__main__':
                 flag=1
 
         #print to led
+        note=str(printing_variable)
+        setText("Note: " + note)
