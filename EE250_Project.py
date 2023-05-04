@@ -6,8 +6,8 @@ import paho.mqtt.client as mqtt
 import socket
 
 
-def on_connect(client, userdata, flags, rc): 
-    print("Connected to server (i.e., broker) with result code "+str(rc))
+
+
 
 button = 3
 flag=1
@@ -22,13 +22,7 @@ sensor_value=[]
 if __name__ == '__main__': 
   
     while True:
-        #subscribe
-        client = mqtt.Client()
-        client.on_message = on_message
-        client.on_connect = on_connect
-        client.connect(host="68.181.32.115", port=11000, keepalive=60)
-    
-
+        
         #publish
         ip_address='68.181.32.115' 
         client = mqtt.Client()
@@ -41,5 +35,11 @@ if __name__ == '__main__':
             if flag==0:
                 client.publish(sensor_value)
                 flag=1
+
+        #subscribe
+        client = mqtt.Client()
+        client.on_message = on_message
+        client.on_connect = on_connect
+        client.connect(host="68.181.32.115", port=11000, keepalive=60)
 
         #print to led
