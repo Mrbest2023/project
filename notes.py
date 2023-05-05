@@ -4,7 +4,7 @@ import os
 import time 
 from typing import Iterable
 
-MAX_FRQ = 2000
+MAX_FRQ = 200
 SLICE_SIZE = 0.15 #seconds
 WINDOW_SIZE = 0.25 #seconds
 
