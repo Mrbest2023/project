@@ -15,7 +15,7 @@ def on_message(client, userdata, msg):
 
 def on_message_from_pong(client, userdata, message): 
    print("Custom callback - sensor_data: "+message.payload.decode())
-   var=int(str.split(message.payload.decode()))
+   var=int(str.split(message))
    sr=32
    frequency=frequency_spectrum(var, sr)
    type=note(frequency)
