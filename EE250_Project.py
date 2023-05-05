@@ -6,6 +6,19 @@ import paho.mqtt.client as mqtt
 import socket
 
 
+def on_connect(client, userdata, flags, rc): 
+    print("Connected to server "+str(rc)) 
+    client.subscribe("btbest/type") 
+    client.message_callback_add("btbest/type", recieving)
+
+def on_message(client, userdata, msg): 
+    print("Custom callback - Note: "+msg.payload.decode())
+    note=str(msg)
+    SetText("Note: " + note)
+
+#def recieving(strng): 
+   # printing_variable = int(message.payload.decode()) 
+    #print("custom callback - Note: "+str(note)) 
 
 
 
@@ -17,31 +30,22 @@ grovepi.pinMode(sound_sensor, "INPUT")
 grovepi.pinMode(button,"INPUT")
 
 led=5
-sensor_value=[]
+sensor_data=[]
 
 if __name__ == '__main__': 
-  
+    
+
     while True:
-        
-        #publish
         ip_address='68.181.32.115' 
-        client = mqtt.Client()
-        time.sleep(1)
+        client = mqtt.Client() 
+        client.on_connect = on_connect 
+        client.on_message = on_message 
+        client.connect(host="eclipse.usc.edu", port=11000, keepalive=60)
         
         if grovepi.digitalRead(button) == 1:
-            sensor_value.appened(grovepi.analogRead(sound_sensor))
+            sensor_data.appened(grovepi.analogRead(sound_sensor))
             flag=0
         else:
             if flag==0:
-                client.publish(sensor_value)
+                client.publish("btbest/sensor_data", sensor_data)
                 flag=1
-
-        #subscribe
-        client = mqtt.Client()
-        client.on_message = on_message
-        client.on_connect = on_connect
-        client.connect(host="68.181.32.115", port=11000, keepalive=60)
-
-        #print to led
-        note=str(printing_variable)
-        setText("Note: " + note)
