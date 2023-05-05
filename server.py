@@ -20,7 +20,7 @@ def on_message_from_pong(client, userdata, message):
    sr=32
    frequency, abc=frequency_spectrum(var, sr)
    type=note(abc)
-   print(type)
+   print("type " + type)
    client.publish("btbest/Note", type)
 
 
