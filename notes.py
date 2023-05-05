@@ -2,6 +2,7 @@ from scipy import fft, arange
 import numpy as np
 import os
 import time 
+from statistics import mean
 
 
 
@@ -28,21 +29,22 @@ def frequency_spectrum(x, sf):
     return frqarr, abs(x)
 
 def note(freq):
-    if freq > 80 and freq < 86:
+    ave = mean(freq)
+    if ave > 80 and ave < 86:
         return("E")
-    if freq > 87 and freq < 93:
+    if ave > 87 and ave < 93:
         return("F")
-    if freq > 94 and freq < 103:
+    if ave > 94 and ave < 103:
         return("G")
-    if freq > 104 and freq < 115:
+    if ave > 104 and ave < 115:
         return("A")
-    if freq > 116 and freq < 124:
+    if ave > 116 and ave < 124:
         return("B")
-    if freq > 125 and freq < 138:
+    if ave > 125 and ave < 138:
         return("C")
-    if freq > 139 and freq < 155:
+    if ave > 139 and ave < 155:
         return("D")
-    if freq > 156 and freq < 174:
+    if ave > 156 and ave < 174:
         return("E")
     else:
         return("OUT OF RANGE")
