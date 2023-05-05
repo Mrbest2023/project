@@ -29,7 +29,7 @@ def frequency_spectrum(x, sf):
     return frqarr, abs(x)
 
 def note(freq):
-    print("freq " + freq)
+    print("freq ", freq)
     ave = mean(freq)
     print (ave)
     if ave > 80 and ave < 86:
