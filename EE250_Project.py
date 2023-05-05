@@ -4,6 +4,7 @@ from grove_rgb_lcd import *
 import time
 import paho.mqtt.client as mqtt
 import socket
+import json
 
 
 def on_connect(client, userdata, flags, rc): 
@@ -48,5 +49,6 @@ if __name__ == '__main__':
             flag=0
         else:
             if flag==0:
-                client.publish("btbest/sensor_data", sensor_data)
+                client.publish("btbest/sensor_data", json.dumps(sensor_data))
+                time.sleep(1)
                 flag=1

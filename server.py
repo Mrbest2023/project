@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import socket 
 import time
 from notes import frequency_spectrum, note
+import json
 
 
 def on_connect(client, userdata, flags, rc): 
@@ -15,7 +16,7 @@ def on_message(client, userdata, msg):
 
 def on_message_from_pong(client, userdata, message): 
    print("Custom callback - sensor_data: "+message.payload.decode())
-   var=int(str.split(message))
+   var=int(str.split( json.loads(message)))
    sr=32
    frequency=frequency_spectrum(var, sr)
    type=note(frequency)
