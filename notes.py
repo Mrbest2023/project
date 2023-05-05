@@ -134,7 +134,8 @@ def frequency_spectrum(x, sf):
     #grab the sample slice and perform FFT on it
     x = np.fft.fft(x)/n
     """
-    return frqarr, abs(x)
+    #return frqarr, abs(x)
+    return lower, upper
 
 def note(freq):
     print("freq ", freq)
