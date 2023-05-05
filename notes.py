@@ -3,6 +3,7 @@ import numpy as np
 import os
 import time 
 from typing import Iterable
+from statistics import mean
 
 MAX_FRQ = 200
 SLICE_SIZE = 0.15 #seconds
@@ -135,12 +136,13 @@ def frequency_spectrum(x, sf):
     x = np.fft.fft(x)/n
     """
     #return frqarr, abs(x)
-    return get_peak_frqs(frq, sample_slice_fft)
+    hi = (lower + upper)/2
+    return hi
 
 def note(freq):
     print("freq ", freq)
-    ave = max(freq)
-    print (ave)
+    #ave = max(freq)
+    #print (ave)
     if ave > 80 and ave < 86:
         return("E")
     if ave > 87 and ave < 93:
