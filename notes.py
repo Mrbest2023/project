@@ -2,6 +2,7 @@ from scipy import fft, arange
 import numpy as np
 import os
 import time 
+from typing import Iterable
 
 MAX_FRQ = 2000
 SLICE_SIZE = 0.15 #seconds
