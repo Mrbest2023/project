@@ -81,6 +81,9 @@ def frequency_spectrum(x, sf):
 
 
 
+    
+    sample_rate = sf
+    samples = x
 
 
 
