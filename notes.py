@@ -14,7 +14,7 @@ def frequency_spectrum(x, sf):
     :returns frequencies and their content distribution
     """
     
-    x = x - np.average(x)  # zero-centering
+    #x = x - np.average(x)  # zero-centering
 
     n = len(x)
     k = arange(n)
