@@ -15,7 +15,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg): 
     print("Custom callback - Note: "+msg.payload.decode())
     note=str(msg)
-    SetText("Note: " + note)
+    setText("Note: " + note)
 
 #def recieving(strng): 
    # printing_variable = int(message.payload.decode()) 
