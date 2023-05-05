@@ -12,6 +12,7 @@ def frequency_spectrum(x, sf):
     :param sf: sampling frequency
     :returns frequencies and their content distribution
     """
+    
     x = x - np.average(x)  # zero-centering
 
     n = len(x)
@@ -21,9 +22,9 @@ def frequency_spectrum(x, sf):
 
     frqarr = frqarr[range(n // 2)]  # one side frequency range
 
-    x = fft(x) / n  # fft computing and normalization
-    x = x[range(n // 2)]
-
+    #grab the sample slice and perform FFT on it
+    x = np.fft.fft(x)/n
+    
     return frqarr, abs(x)
 
 def note(freq):
