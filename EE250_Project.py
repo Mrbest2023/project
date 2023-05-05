@@ -43,7 +43,8 @@ if __name__ == '__main__':
         client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
         
         if grovepi.digitalRead(button) == 1:
-            sensor_data.appened(grovepi.analogRead(sound_sensor))
+            s = grovepi.analogRead(sound_sensor)
+            sensor_data.append(s)
             flag=0
         else:
             if flag==0:
