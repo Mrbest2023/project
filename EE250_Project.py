@@ -9,7 +9,7 @@ import socket
 def on_connect(client, userdata, flags, rc): 
     print("Connected to server "+str(rc)) 
     client.subscribe("btbest/type") 
-    client.message_callback_add("btbest/type", recieving)
+    client.message_callback_add("btbest/type", on_message)
 
 def on_message(client, userdata, msg): 
     print("Custom callback - Note: "+msg.payload.decode())
