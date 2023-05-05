@@ -1,26 +1,31 @@
 import paho.mqtt.client as mqtt 
+import socket 
+import time
 from notes import frequency_spectrum, note
 
 
-def on_connect(client, userdata, flags, rc):
-    print("Connected to server (i.e., broker) with result code "+str(rc))
-    client.subscribe("btbest/sensor_value")
+def on_connect(client, userdata, flags, rc): 
+    print("Connected to server "+str(rc)) 
+    client.subscribe("btbest/sensor_data") 
+    client.message_callback_add("btbest/sensor_data", on_message_from_pong)
 
-    client.message_callback_add("btbest/sensor_value", send)
-
-def send(data):
-    sr=32
-    freq=frequency_spectrum(data, sr)
-    type=note(freq)
-    client.publish(type)
-
+"""This function is the default callback for messages receieved"""
 def on_message(client, userdata, msg): 
-    print("Default callback - topic: " + msg.topic + " msg: " + str(msg.payload, "utf-8"))
+    print("default callback - topic: " + msg.topi + " msg: " + str(msg.payload, "utf-8"))
+
+def on_message_from_pong(client, userdata, message): 
+   print("Custom callback - sensor_data: "+message.payload.decode())
+   var=int(str.split(message))
+   sr=32
+   frequency=frequency_spectrum(var, sr)
+   type=note(frequency)
+   client.publish("btbest/Note", type)
+
 
 if __name__ == '__main__':
 
-    client = mqtt.Client()
-    client.on_message = on_message
-    client.on_connect = on_connect
-    client.connect(host="68.181.32.115", port=11000, keepalive=60)
-    client.loop_forever()
+   client = mqtt.Client() 
+   client.on_connect = on_connect 
+   client.on_message = on_message 
+   client.connect(host="eclipse.usc.edu", port=11000, keepalive=60)
+   client.loop_forever()
