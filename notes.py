@@ -2,7 +2,6 @@ from scipy import fft, arange
 import numpy as np
 import os
 import time 
-from statistics import mean
 
 
 
@@ -30,7 +29,7 @@ def frequency_spectrum(x, sf):
 
 def note(freq):
     print("freq ", freq)
-    ave = mean(freq)
+    ave = max(freq)
     print (ave)
     if ave > 80 and ave < 86:
         return("E")
