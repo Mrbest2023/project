@@ -19,6 +19,7 @@ def on_message_from_pong(client, userdata, message):
    var=json.loads(message.payload.decode())
    sr=32
    frequency, abc=frequency_spectrum(var, sr)
+   print("frequency ", frequency)
    type=note(abc)
    print("type ")
    print(type)
