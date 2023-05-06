@@ -3,7 +3,22 @@ import socket
 import time
 from notes import frequency_spectrum, note
 import json
+import pathlib
+from pydub import AudioSegment
+import argparse 
 
+def get_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Analyze an audio file")
+    parser.add_argument("file", type=pathlib.Path, help="The file to analyze")
+    parser.add_argument("start_time", type=float, help="The start time of the slice to analyze")
+    parser.add_argument("-o", "--output", help="The output file to save the plot to")
+    return parser
+
+parser = get_parser()
+args = parser.parse_args()
+
+audio = AudioSegment.from_mp3(args.file)
+samples = audio.get_array_of_samples()
 
 def on_connect(client, userdata, flags, rc): 
     print("Connected to server "+str(rc)) 
@@ -16,7 +31,7 @@ def on_message(client, userdata, msg):
 
 def on_message_from_pong(client, userdata, message): 
    print("Custom callback - sensor_data: "+message.payload.decode())
-   var=json.loads(message.payload.decode()) 
+   var=samples     #json.loads(message.payload.decode()) 
    sr=2000
    abc=frequency_spectrum(var, sr)
    
