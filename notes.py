@@ -121,6 +121,7 @@ def frequency_spectrum(x, sf):
         
         #TODO: calculate the locations of the upper and lower FFT peak using get_peak_frqs()
         (lower, upper) = get_peak_frqs(frq, sample_slice_fft)
+    print("While loop is done")
     """
     #x = x - np.average(x)  # zero-centering
 
