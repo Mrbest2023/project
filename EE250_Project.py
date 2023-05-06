@@ -74,5 +74,5 @@ if __name__ == '__main__':
                 client.publish("btbest/sensor_data", json.dumps(samples_))
                 time.sleep(1)
                 flag=1
-            client.loop.forever()
+        #client.loop.forever()
         
