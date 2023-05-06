@@ -107,21 +107,21 @@ def frequency_spectrum(x, sf):
     lower=(0, 0)
     upper=(0, 0)
     print ("samples length: ", len(samples), " end index: ", end_index)
-    #while end_index < len(samples):
-        #print("Sample {}:".format(i), end=' ')
-        #i += 1
+    while end_index < len(samples):
+        print("Sample {}:".format(i), end=' ')
+        i += 1
 
-    sample_slice = samples[start_index:end_index] # get the sample slice
+        sample_slice = samples[start_index:end_index] # get the sample slice
 
         #TODO: grab the sample slice and perform FFT on it
-    sample_slice_fft = np.fft.fft(sample_slice)/n
+        sample_slice_fft = np.fft.fft(sample_slice)/n
 
         #TODO: truncate the FFT to 0 to 2000 Hz
-    sample_slice_fft = sample_slice_fft[range(max_frq_idx)]
+        sample_slice_fft = sample_slice_fft[range(max_frq_idx)]
         
         #TODO: calculate the locations of the upper and lower FFT peak using get_peak_frqs()
-    (lower, upper) = get_peak_frqs(frq, sample_slice_fft)
-    print("CHECKPOINT")
+        (lower, upper) = get_peak_frqs(frq, sample_slice_fft)
+        print("CHECKPOINT")
     """
     #x = x - np.average(x)  # zero-centering
 
