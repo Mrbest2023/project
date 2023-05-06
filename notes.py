@@ -141,7 +141,8 @@ def frequency_spectrum(x, sf):
     #return frqarr, abs(x)
     print("lower", lower)
     print("upper", upper)
-    hi = (max(lower) + max(upper))/2 
+    values=[lower, upper]
+    hi = max(values) 
     return hi
 
 def note(freq):
