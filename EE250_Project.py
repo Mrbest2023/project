@@ -7,9 +7,10 @@ import socket
 import json
 from grove_rgb_lcd import *
 from pydub import AudioSegment
+import argparse 
 
 
-audio = AudioSegment.from_mp3(file)
+audio = AudioSegment.from_mp3(args.file)
 samples = audio.get_array_of_samples()
 
 def on_connect(client, userdata, flags, rc): 
