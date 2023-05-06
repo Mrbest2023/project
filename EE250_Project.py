@@ -22,6 +22,7 @@ def on_message(client, userdata, msg):
     print("Custom callback - Note: "+msg.payload.decode())
     note=str(msg)
     setText("Note: " + note)
+    print("It works")
     time.sleep(1)
 
 #def recieving(strng): 
