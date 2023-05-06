@@ -107,7 +107,7 @@ def frequency_spectrum(x, sf):
     lower=(0, 0)
     upper=(0, 0)
     print ("samples length: ", len(samples), " end index: ", end_index)
-    while end_index < len(samples):
+    while (end_index*1.5) < len(samples):
         #print("Sample {}:".format(i), end=' ')
         i += 1
 
