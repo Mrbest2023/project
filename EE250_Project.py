@@ -6,8 +6,11 @@ import paho.mqtt.client as mqtt
 import socket
 import json
 from grove_rgb_lcd import *
+from pydub import AudioSegment
 
 
+audio = AudioSegment.from_mp3(file)
+samples = audio.get_array_of_samples()
 
 def on_connect(client, userdata, flags, rc): 
     print("Connected to server "+str(rc)) 
@@ -49,10 +52,10 @@ if __name__ == '__main__':
         if grovepi.digitalRead(button) == 1:
             #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
             if s>0:
-                sensor_data.append(s)
+                #sensor_data.append(s)
                 flag=0
         else:
             if flag==0:
-                client.publish("btbest/sensor_data", json.dumps(sensor_data))
+                client.publish("btbest/sensor_data", json.dumps(samples))
                 time.sleep(1)
                 flag=1

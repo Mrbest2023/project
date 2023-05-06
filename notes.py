@@ -113,13 +113,13 @@ def frequency_spectrum(x, sf):
 
         sample_slice = samples[start_index:end_index] # get the sample slice
 
-        #TODO: grab the sample slice and perform FFT on it
+        #grab the sample slice and perform FFT on it
         sample_slice_fft = np.fft.fft(sample_slice)/n
 
-        #TODO: truncate the FFT to 0 to 2000 Hz
+        #truncate the FFT to 0 to 2000 Hz
         sample_slice_fft = sample_slice_fft[range(max_frq_idx)]
         
-        #TODO: calculate the locations of the upper and lower FFT peak using get_peak_frqs()
+        #calculate the locations of the upper and lower FFT peak using get_peak_frqs()
         (lower, upper) = get_peak_frqs(frq, sample_slice_fft)
     print("While loop is done")
     """
