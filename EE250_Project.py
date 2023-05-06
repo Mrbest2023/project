@@ -71,6 +71,6 @@ if __name__ == '__main__':
             flag=0
         else:
             if flag==0:
-                client.publish("btbest/sensor_data", json.dump(samples))
+                client.publish("btbest/sensor_data", json.dumps(samples))
                 time.sleep(1)
                 flag=1
