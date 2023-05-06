@@ -9,7 +9,7 @@ from grove_rgb_lcd import *
 from pydub import AudioSegment
 
 
-audio = AudioSegment.from_mp3(file)
+audio = AudioSegment.from_mp3(Marinas_voice)
 samples = audio.get_array_of_samples()
 
 def on_connect(client, userdata, flags, rc): 
