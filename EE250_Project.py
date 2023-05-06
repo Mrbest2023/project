@@ -5,6 +5,8 @@ import time
 import paho.mqtt.client as mqtt
 import socket
 import json
+from grove_rgb_lcd import *
+
 
 
 def on_connect(client, userdata, flags, rc): 
@@ -16,6 +18,7 @@ def on_message(client, userdata, msg):
     print("Custom callback - Note: "+msg.payload.decode())
     note=str(msg)
     setText("Note: " + note)
+    time.sleep(1)
 
 #def recieving(strng): 
    # printing_variable = int(message.payload.decode()) 
