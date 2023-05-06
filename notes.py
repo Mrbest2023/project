@@ -9,10 +9,6 @@ MAX_FRQ = 200
 SLICE_SIZE = 0.15 #seconds
 WINDOW_SIZE = 0.25 #seconds
 
-# TODO: implement this dictionary
-LOWER_FRQS = [697, 770, 852, 941]
-HIGHER_FRQS = [1209, 1336, 1477]
-FRQ_THRES = 20
 
 
 def get_max_frq(frq: Iterable[float], fft: Iterable[float]) -> float:
@@ -108,8 +104,8 @@ def frequency_spectrum(x, sf):
 
     print()
     i = 1
-    lower=0
-    upper=0
+    lower=(0, 0)
+    upper=(0, 0)
     while end_index < len(samples):
         print("Sample {}:".format(i), end=' ')
         i += 1
@@ -124,6 +120,7 @@ def frequency_spectrum(x, sf):
         
         #TODO: calculate the locations of the upper and lower FFT peak using get_peak_frqs()
         (lower, upper) = get_peak_frqs(frq, sample_slice_fft)
+        print("CHECKPOINT")
     """
     #x = x - np.average(x)  # zero-centering
 
