@@ -56,21 +56,21 @@ audio = AudioSegment.from_mp3(args.file)
 samples = audio.get_array_of_samples()
 
 if __name__ == '__main__': 
-    
-    ip_address='68.181.32.115' 
-    client = mqtt.Client() 
-    client.on_connect = on_connect 
-    client.on_message = on_message 
-    client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
-    if grovepi.digitalRead(button) == 1:
-        #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
-        """if s>0:
-            #sensor_data.append(s)"""
-        flag=0
-    else:
-        if flag==0:
-            samples_=1
-            client.publish("btbest/sensor_data", json.dumps(samples_))
-            time.sleep(1)
-            flag=1
-    client.loop()
+    while True:    
+        ip_address='68.181.32.115' 
+        client = mqtt.Client() 
+        client.on_connect = on_connect 
+        client.on_message = on_message 
+        client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
+        if grovepi.digitalRead(button) == 1:
+            #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
+            """if s>0:
+                #sensor_data.append(s)"""
+            flag=0
+        else:
+            if flag==0:
+                samples_=1
+                client.publish("btbest/sensor_data", json.dumps(samples_))
+                time.sleep(1)
+                flag=1
+        client.loop()
