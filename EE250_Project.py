@@ -26,7 +26,7 @@ def on_message(client, userdata, msg):
 button = 3
 flag=1
 
-sound_sensor=0
+sound_sensor=0 #PORT A0
 grovepi.pinMode(sound_sensor, "INPUT")
 grovepi.pinMode(button,"INPUT")
 
@@ -45,8 +45,9 @@ if __name__ == '__main__':
         
         if grovepi.digitalRead(button) == 1:
             s = grovepi.analogRead(sound_sensor)
-            sensor_data.append(s)
-            flag=0
+            if s>0:
+                sensor_data.append(s)
+                flag=0
         else:
             if flag==0:
                 client.publish("btbest/sensor_data", json.dumps(sensor_data))
