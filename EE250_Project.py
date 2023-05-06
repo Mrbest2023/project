@@ -66,9 +66,9 @@ if __name__ == '__main__':
         
         if grovepi.digitalRead(button) == 1:
             #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
-            if s>0:
-                #sensor_data.append(s)
-                flag=0
+            """if s>0:
+                #sensor_data.append(s)"""
+            flag=0
         else:
             if flag==0:
                 client.publish("btbest/sensor_data", json.dumps(samples))
