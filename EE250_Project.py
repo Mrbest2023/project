@@ -24,6 +24,17 @@ def on_message(client, userdata, msg):
     setText("Note: " + note)
     print("It works")
     time.sleep(1)
+    if grovepi.digitalRead(button) == 1:
+            #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
+            """if s>0:
+                #sensor_data.append(s)"""
+            flag=0
+        else:
+            if flag==0:
+                samples_=1
+                client.publish("btbest/sensor_data", json.dumps(samples_))
+                time.sleep(1)
+                flag=1
 
 #def recieving(strng): 
    # printing_variable = int(message.payload.decode()) 
@@ -63,16 +74,5 @@ if __name__ == '__main__':
     client.on_message = on_message 
     client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
     client.loop_forever()
-    while True:
-        if grovepi.digitalRead(button) == 1:
-            #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
-            """if s>0:
-                #sensor_data.append(s)"""
-            flag=0
-        else:
-            if flag==0:
-                samples_=1
-                client.publish("btbest/sensor_data", json.dumps(samples_))
-                time.sleep(1)
-                flag=1
+        
         
