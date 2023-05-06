@@ -56,13 +56,14 @@ audio = AudioSegment.from_mp3(args.file)
 samples = audio.get_array_of_samples()
 
 if __name__ == '__main__': 
-    while True:    
-        ip_address='68.181.32.115' 
-        client = mqtt.Client() 
-        client.on_connect = on_connect 
-        client.on_message = on_message 
-        client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
-        client.loop_start()
+    
+    ip_address='68.181.32.115' 
+    client = mqtt.Client() 
+    client.on_connect = on_connect 
+    client.on_message = on_message 
+    client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
+    client.loop_forever()
+    while True:
         if grovepi.digitalRead(button) == 1:
             #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
             """if s>0:
