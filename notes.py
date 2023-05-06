@@ -135,7 +135,7 @@ def frequency_spectrum(x, sf):
     x = np.fft.fft(x)/n
     """
     #return frqarr, abs(x)
-    hi = (lower + upper)/2
+    hi = (mean(lower) + mean(upper))/2
     return hi
 
 def note(freq):
