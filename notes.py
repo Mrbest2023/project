@@ -48,7 +48,7 @@ def get_peak_frqs(frq, fft):
     Returns:
         tuple: A tuple containing the two frequencies with the highest amplitudes in the given FFT array
     """
-    #TODO: implement an algorithm to find the two maximum values in a given array
+    #implement an algorithm to find the two maximum values in a given array
     
     #get the high and low frequency by splitting it in the middle (1000Hz)
 

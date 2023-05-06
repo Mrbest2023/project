@@ -32,7 +32,7 @@ def on_message(client, userdata, msg):
 def on_message_from_pong(client, userdata, message): 
    print("Custom callback - sensor_data: "+message.payload.decode())
    var=samples     #json.loads(message.payload.decode()) 
-   sr=2000
+   sr=30
    abc=frequency_spectrum(var, sr)
    
    type=note(abc)
