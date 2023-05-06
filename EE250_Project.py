@@ -73,6 +73,7 @@ if __name__ == '__main__':
         else:
             if flag==0:
                 samples_=samples.tolist() 
+                print(samples_)
                 client.publish("btbest/sensor_data", json.dumps(samples_))
                 time.sleep(1)
                 flag=1
