@@ -29,12 +29,12 @@ def on_message(client, userdata, msg):
             """if s>0:
                 #sensor_data.append(s)"""
             flag=0
-        else:
-            if flag==0:
-                samples_=1
-                client.publish("btbest/sensor_data", json.dumps(samples_))
-                time.sleep(1)
-                flag=1
+    else:
+        if flag==0:
+            samples_=1
+            client.publish("btbest/sensor_data", json.dumps(samples_))
+            time.sleep(1)
+            flag=1
 
 #def recieving(strng): 
    # printing_variable = int(message.payload.decode()) 
