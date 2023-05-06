@@ -10,8 +10,7 @@ from pydub import AudioSegment
 import argparse 
 
 
-audio = AudioSegment.from_mp3(args.file)
-samples = audio.get_array_of_samples()
+
 
 def on_connect(client, userdata, flags, rc): 
     print("Connected to server "+str(rc)) 
@@ -39,6 +38,20 @@ grovepi.pinMode(button,"INPUT")
 
 led=5
 sensor_data=[]
+
+
+def get_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Analyze an audio file")
+    parser.add_argument("file", type=pathlib.Path, help="The file to analyze")
+    parser.add_argument("start_time", type=float, help="The start time of the slice to analyze")
+    parser.add_argument("-o", "--output", help="The output file to save the plot to")
+    return parser
+
+parser = get_parser()
+args = parser.parse_args()
+
+audio = AudioSegment.from_mp3(args.file)
+samples = audio.get_array_of_samples()
 
 if __name__ == '__main__': 
     
