@@ -47,4 +47,4 @@ if __name__ == '__main__':
     client.on_connect = on_connect 
     client.on_message = on_message 
     client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
-    client.loop_forever()
+    #client.loop_forever()
