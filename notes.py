@@ -149,27 +149,29 @@ def note(freq):
     print("freq ", freq)
     #ave = max(freq)
     #print (ave)
-    if freq > 80 and freq < 86:
-        return("E")
-    if freq > 87 and freq < 93:
-        return("F")
-    if freq > 94 and freq < 103:
-        return("G")
-    if freq > 104 and freq < 115:
-        return("A")
-    if freq > 116 and freq < 124:
-        return("B")
-    if freq > 125 and freq < 138:
-        return("C")
-    if freq > 139 and freq < 155:
+    if freq > 71 and freq <= 80:
         return("D")
-    if freq > 156 and freq < 174:
+    if freq > 80 and freq <= 86:
         return("E")
-    if freq > 175 and freq < 190:
+    if freq > 87 and freq <= 93:
         return("F")
-    if freq > 191 and freq < 207:
+    if freq > 94 and freq <= 103:
         return("G")
-    if freq > 208 and freq < 230:
+    if freq > 104 and freq <= 115:
+        return("A")
+    if freq > 116 and freq <= 124:
+        return("B")
+    if freq > 125 and freq <= 138:
+        return("C")
+    if freq > 139 and freq <= 155:
+        return("D")
+    if freq > 156 and freq <= 174:
+        return("E")
+    if freq > 175 and freq <= 190:
+        return("F")
+    if freq > 191 and freq <= 207:
+        return("G")
+    if freq > 208 and freq <= 230:
         return("A")
     else:
         return("OUT OF RANGE")
