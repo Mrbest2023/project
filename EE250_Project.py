@@ -63,6 +63,8 @@ if __name__ == '__main__':
     #client.on_message = on_message 
     client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
     while True:
+        client.on_connect = on_connect 
+        client.on_message = on_message
         if grovepi.digitalRead(button) == 1:
             #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
             """if s>0:
@@ -74,8 +76,7 @@ if __name__ == '__main__':
                 client.publish("btbest/sensor_data", json.dumps(samples_))
                 time.sleep(1)
                 flag=1
-                client.on_connect = on_connect 
-                client.on_message = on_message
+                
             
 
         #client.loop.forever()
