@@ -67,8 +67,6 @@ if __name__ == '__main__':
             #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
             """if s>0:
                 #sensor_data.append(s)"""
-            client.on_connect = on_connect 
-            client.on_message = on_message
             flag=0
         else:
             if flag==0:
@@ -76,6 +74,8 @@ if __name__ == '__main__':
                 client.publish("btbest/sensor_data", json.dumps(samples_))
                 time.sleep(1)
                 flag=1
+            client.on_connect = on_connect 
+            client.on_message = on_message
 
         #client.loop.forever()
         
