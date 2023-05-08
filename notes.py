@@ -165,5 +165,11 @@ def note(freq):
         return("D")
     if freq > 156 and freq < 174:
         return("E")
+    if freq > 175 and freq < 190:
+        return("F")
+    if freq > 191 and freq < 207:
+        return("G")
+    if freq > 208 and freq < 230:
+        return("A")
     else:
         return("OUT OF RANGE")
