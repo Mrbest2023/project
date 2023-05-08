@@ -10,7 +10,7 @@ from pydub import AudioSegment
 import argparse 
 import pathlib
 
-
+grove_vcc=5
 
 
 def on_connect(client, userdata, flags, rc): 
@@ -21,7 +21,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg): 
     print("Custom callback - Note: "+msg.payload.decode())
     note=str(msg)
-    setText("Note: " + note)
+    grove_rgb_lcd.setText("Note: " + note)
     print("It works")
     time.sleep(1)
 
