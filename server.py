@@ -38,6 +38,7 @@ def on_message_from_pong(client, userdata, message):
    type=note(abc)
    print(type)
    client.publish("btbest/Note", type)
+   print("it got sent")
 
 
 if __name__ == '__main__':
