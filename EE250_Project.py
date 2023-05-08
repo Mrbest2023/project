@@ -68,14 +68,15 @@ if __name__ == '__main__':
             """if s>0:
                 #sensor_data.append(s)"""
             flag=0
+            client.on_connect = on_connect 
+            client.on_message = on_message
         else:
             if flag==0:
                 samples_=1
                 client.publish("btbest/sensor_data", json.dumps(samples_))
                 time.sleep(1)
                 flag=1
-            client.on_connect = on_connect 
-            client.on_message = on_message
+            
 
         #client.loop.forever()
         
