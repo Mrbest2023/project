@@ -59,14 +59,16 @@ if __name__ == '__main__':
     
     ip_address='68.181.32.115' 
     client = mqtt.Client() 
-    client.on_connect = on_connect 
-    client.on_message = on_message 
+    #client.on_connect = on_connect 
+    #client.on_message = on_message 
     client.connect(host="broker.hivemq.com", port=1883, keepalive=60)
     while True:
         if grovepi.digitalRead(button) == 1:
             #s = grovepi.analogRead(sound_sensor) #Would be used with a microphone
             """if s>0:
                 #sensor_data.append(s)"""
+            client.on_connect = on_connect 
+            client.on_message = on_message
             flag=0
         else:
             if flag==0:
@@ -74,5 +76,6 @@ if __name__ == '__main__':
                 client.publish("btbest/sensor_data", json.dumps(samples_))
                 time.sleep(1)
                 flag=1
+
         #client.loop.forever()
         
